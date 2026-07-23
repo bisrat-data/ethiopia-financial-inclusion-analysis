@@ -12,6 +12,23 @@ The project focuses on:
 - Financial inclusion insights
 - Preparation for forecasting and impact modeling
 
+## Dashboard Features
+
+- Interactive Streamlit Dashboard
+- Filter by Pillar
+- Filter by Category
+- Filter by Fiscal Year
+- Filter by Gender
+- Search Indicators
+- KPI Cards
+- Records by Pillar Chart
+- Records by Category Chart
+- Category Distribution Pie Chart
+- Trend Analysis by Year
+- Correlation Analysis
+- Top Indicators Table
+- Download Filtered Data as CSV
+
 ---
 
 ## Dataset Description
@@ -48,6 +65,8 @@ ethiopia-financial-inclusion-analysis/
 │   └── interim_report.md
 │
 ├── src/
+│   └── app.py
+│
 │
 ├── data_enrichment_log.md
 ├── README.md
@@ -73,16 +92,12 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Notebook
+## Running the Dashboard
 
-Open:
+Start the Streamlit application:
 
-```
-notebooks/01_data_exploration.ipynb
-```
-
-and run all cells.
-
+```bash
+streamlit run src/app.py
 ---
 
 ## Data Sources
@@ -106,3 +121,13 @@ and run all cells.
 ## Author
 
 Netsanet Gebrekidan
+
+---
+
+## Technologies Used
+
+- Python
+- Streamlit
+- Pandas
+- Plotly
+- OpenPyXL
