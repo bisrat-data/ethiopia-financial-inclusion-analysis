@@ -12,6 +12,34 @@ The project focuses on:
 - Financial inclusion insights
 - Preparation for forecasting and impact modeling
 
+## Project Deliverables
+
+This project includes:
+
+### Task 1 & 2
+- Data Exploration
+- Data Enrichment
+- Exploratory Data Analysis (EDA)
+
+### Task 3
+- Event Impact Modeling
+- Event timeline analysis
+- Event frequency analysis
+- Event-to-indicator relationship exploration
+
+### Task 4
+- Financial Inclusion Forecasting
+- Account Ownership Forecasts (2025–2027)
+- Conservative Scenario
+- Baseline Scenario
+- Optimistic Scenario
+
+### Task 5
+- Interactive Streamlit Dashboard
+- Historical Analysis
+- Forecast Visualization
+- Downloadable Data
+
 ## Dashboard Features
 
 - Interactive Streamlit Dashboard

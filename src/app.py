@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 # -----------------------------
 # PAGE CONFIG
@@ -13,7 +14,11 @@ st.set_page_config(
 # -----------------------------
 # LOAD DATA
 # -----------------------------
-df = pd.read_excel("data/raw/ethiopia_fi_unified_data.xlsx")
+from utils import load_data
+
+df = load_data(
+    "data/raw/ethiopia_fi_unified_data.xlsx"
+)
 
 # -----------------------------
 # TITLE
@@ -393,6 +398,28 @@ if not numeric_df.empty:
 
     st.dataframe(top_indicators)
 
+    st.subheader("🔮 Financial Inclusion Forecasts")
+
+forecast_data = pd.DataFrame({
+    "Year":[2025,2026,2027],
+    "Forecast":[65,70,75]
+})
+
+fig = px.line(
+    forecast_data,
+    x="Year",
+    y="Forecast",
+    markers=True,
+    title="Projected Financial Inclusion Growth"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
+
+st.dataframe(forecast_data)
+
 # -----------------------------
 # Data Preview Table
 with st.expander("📋 View Dataset"):
@@ -424,6 +451,57 @@ with st.expander("📌 Dataset Information"):
 
     st.write("Column Names:")
     st.write(list(df.columns))
+
+    # -----------------------------
+# FORECAST SECTION
+# -----------------------------
+
+st.divider()
+
+st.header("🔮 Financial Inclusion Forecasts")
+
+forecast_path = (
+    "data/processed/account_ownership_forecast.csv"
+)
+
+if os.path.exists(forecast_path):
+
+    forecast_df = pd.read_csv(
+        forecast_path
+    )
+
+    scenario = st.selectbox(
+        "Select Forecast Scenario",
+        [
+            "Conservative",
+            "Baseline",
+            "Optimistic"
+        ]
+    )
+
+    fig = px.line(
+        forecast_df,
+        x="fiscal_year",
+        y=scenario,
+        markers=True,
+        title=f"Account Ownership Forecast ({scenario})"
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+    st.dataframe(
+        forecast_df,
+        use_container_width=True
+    )
+
+else:
+
+    st.info(
+        "Forecast file not found. Run 03_forecasting.ipynb first."
+    )
 
     st.divider()
 
