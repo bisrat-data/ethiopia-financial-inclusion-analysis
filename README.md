@@ -148,7 +148,7 @@ streamlit run src/app.py
 
 ## Author
 
-Netsanet Gebrekidan
+Bisrat Teklay
 
 ---
 
